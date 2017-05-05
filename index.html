@@ -14,9 +14,17 @@
             <div class="healthbar">
                 <div
                         class="healthbar text-center"
-                        style="background-color: green; margin: 0; color: white;"
+                        style="background-color: green; margin: 0; color: white; border: 1px solid;"
                         :style="{width: playerHealth + '%'}">
                     {{ playerHealth }}
+                </div>
+            </div>
+            <div class="magicbar">
+                <div
+                        class="magicbar text-center"
+                        style="background-color: blue; margin: 0; color: white; border: 1px solid;"
+                        :style="{width: magicPoints + '%'}">
+                    {{ magicPoints }}
                 </div>
             </div>
         </div>
@@ -40,7 +48,7 @@
     <section class="row controls" v-else>
         <div class="small-12 columns">
             <button id="attack" @click="attack">ATTACK</button>
-            <button id="special-attack" @click="specialAttack">SPECIAL ATTACK</button>
+            <button id="special-attack" @click="specialAttack" :disabled="magicPoints < 100 ? true : false" :class>SPECIAL ATTACK</button>
             <button id="heal" @click="heal">HEAL</button>
             <button id="give-up" @click="giveUp">GIVE UP</button>
         </div>
